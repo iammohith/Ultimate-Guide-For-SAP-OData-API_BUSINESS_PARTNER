@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+		"name": "SAP Business Partner API (A2X)",
+		"description": "Production-ready Postman collection for SAP API_BUSINESS_PARTNER with CSRF token handling and comprehensive examples.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Fetch CSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Store CSRF token for subsequent requests",
+									"pm.collectionVariables.set('csrfToken', pm.response.headers.get('X-CSRF-Token'));",
+									"",
+									"pm.test('CSRF token received', function() {",
+									"    pm.expect(pm.response.headers.get('X-CSRF-Token')).to.not.be.empty;",
+									"    pm.expect(pm.response.headers.get('X-CSRF-Token')).to.not.equal('Required');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "Fetch"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartner",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartner"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Business Partner",
+			"item": [
+				{
+					"name": "Get Business Partner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test('Response has BusinessPartner field', function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.d.BusinessPartner).to.not.be.empty;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartner('{{bpNumber}}')",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartner('{{bpNumber}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Business Partner with Expand",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartner('{{bpNumber}}')?$expand=to_BusinessPartnerAddress,to_BusinessPartnerRole",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartner('{{bpNumber}}')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "to_BusinessPartnerAddress,to_BusinessPartnerRole"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Business Partner (Organization)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 201', function() {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test('BusinessPartner ID returned', function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.d.BusinessPartner).to.not.be.empty;",
+									"    pm.collectionVariables.set('createdBpNumber', jsonData.d.BusinessPartner);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrfToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"BusinessPartnerCategory\": \"2\",\n    \"OrganizationBPName1\": \"ACME Corporation\",\n    \"SearchTerm1\": \"ACME\",\n    \"BusinessPartnerGrouping\": \"BP01\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartner",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Business Partner (Person)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrfToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"BusinessPartnerCategory\": \"1\",\n    \"FirstName\": \"John\",\n    \"LastName\": \"Doe\",\n    \"BusinessPartnerGrouping\": \"BP01\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartner",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Business Partner",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrfToken}}"
+							},
+							{
+								"key": "If-Match",
+								"value": "*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"SearchTerm1\": \"UPDATED\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartner('{{bpNumber}}')",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartner('{{bpNumber}}')"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Addresses",
+			"item": [
+				{
+					"name": "Get BP Addresses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartner('{{bpNumber}}')/to_BusinessPartnerAddress",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartner('{{bpNumber}}')",
+								"to_BusinessPartnerAddress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrfToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"BusinessPartner\": \"{{bpNumber}}\",\n    \"Country\": \"US\",\n    \"CityName\": \"New York\",\n    \"PostalCode\": \"10001\",\n    \"StreetName\": \"Fifth Avenue\",\n    \"HouseNumber\": \"123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartnerAddress",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartnerAddress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrfToken}}"
+							},
+							{
+								"key": "If-Match",
+								"value": "*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"StreetName\": \"Main Street\",\n    \"HouseNumber\": \"456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/A_BusinessPartnerAddress(BusinessPartner='{{bpNumber}}',AddressID='{{addressId}}')",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"A_BusinessPartnerAddress(BusinessPartner='{{bpNumber}}',AddressID='{{addressId}}')"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{sapPassword}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{sapUsername}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://{host}:{port}/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+		},
+		{
+			"key": "bpNumber",
+			"value": "1000000"
+		},
+		{
+			"key": "addressId",
+			"value": "0000000001"
+		},
+		{
+			"key": "csrfToken",
+			"value": ""
+		},
+		{
+			"key": "createdBpNumber",
+			"value": ""
+		},
+		{
+			"key": "sapUsername",
+			"value": ""
+		},
+		{
+			"key": "sapPassword",
+			"value": ""
+		}
+	]
+}
