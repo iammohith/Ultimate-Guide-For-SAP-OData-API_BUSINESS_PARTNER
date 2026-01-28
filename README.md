@@ -76,7 +76,7 @@ Build integrations, develop custom apps, create APIs, generate database schemas,
 | File | Purpose | Audience |
 |------|---------|----------|
 | **API_BUSINESS_PARTNER_SCHEMA.json** | Complete technical schema with all entity types, properties, and relationships | Technical, Functional |
-| **CONVERSION_SUMMARY.md** | Detailed conversion report and technical specifications | Technical |
+| **Summary.md** | Detailed xml to json conversion report and technical specifications | Technical |
 | **entity_type_index.json** | Quick reference index of all entity types | All |
 | **README.md** (this file) | Comprehensive guide for all audiences | All |
 | **LICENSE** | Usage terms and conditions | All |
