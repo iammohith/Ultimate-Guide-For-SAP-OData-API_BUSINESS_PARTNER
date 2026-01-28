@@ -1,0 +1,370 @@
+{
+  "A_AddressEmailAddressType": {
+    "Label": "Email Address",
+    "Key_Fields": [
+      "AddressID",
+      "Person",
+      "OrdinalNumber"
+    ],
+    "Property_Count": 7,
+    "Navigation_Count": 0
+  },
+  "A_AddressFaxNumberType": {
+    "Label": "Fax Number",
+    "Key_Fields": [
+      "AddressID",
+      "Person",
+      "OrdinalNumber"
+    ],
+    "Property_Count": 9,
+    "Navigation_Count": 0
+  },
+  "A_AddressHomePageURLType": {
+    "Label": "Home Page URL",
+    "Key_Fields": [
+      "AddressID",
+      "Person",
+      "OrdinalNumber",
+      "ValidityStartDate",
+      "IsDefaultURLAddress"
+    ],
+    "Property_Count": 9,
+    "Navigation_Count": 0
+  },
+  "A_AddressPhoneNumberType": {
+    "Label": "Phone Number",
+    "Key_Fields": [
+      "AddressID",
+      "Person",
+      "OrdinalNumber"
+    ],
+    "Property_Count": 10,
+    "Navigation_Count": 0
+  },
+  "A_BPContactToAddressType": {
+    "Label": "Contact Person Address",
+    "Key_Fields": [
+      "RelationshipNumber",
+      "BusinessPartnerCompany",
+      "BusinessPartnerPerson",
+      "ValidityEndDate",
+      "AddressID"
+    ],
+    "Property_Count": 49,
+    "Navigation_Count": 5
+  },
+  "A_BPContactToFuncAndDeptType": {
+    "Label": "Function and Department",
+    "Key_Fields": [
+      "RelationshipNumber",
+      "BusinessPartnerCompany",
+      "BusinessPartnerPerson",
+      "ValidityEndDate"
+    ],
+    "Property_Count": 12,
+    "Navigation_Count": 0
+  },
+  "A_BuPaAddressUsageType": {
+    "Label": "Address Usage",
+    "Key_Fields": [
+      "BusinessPartner",
+      "ValidityEndDate",
+      "AddressUsage",
+      "AddressID"
+    ],
+    "Property_Count": 7,
+    "Navigation_Count": 0
+  },
+  "A_BuPaIdentificationType": {
+    "Label": "Identification",
+    "Key_Fields": [
+      "BusinessPartner",
+      "BPIdentificationType",
+      "BPIdentificationNumber"
+    ],
+    "Property_Count": 10,
+    "Navigation_Count": 0
+  },
+  "A_BuPaIndustryType": {
+    "Label": "Industry",
+    "Key_Fields": [
+      "IndustrySector",
+      "IndustrySystemType",
+      "BusinessPartner"
+    ],
+    "Property_Count": 5,
+    "Navigation_Count": 0
+  },
+  "A_BusinessPartnerType": {
+    "Label": "Business Partner",
+    "Key_Fields": [
+      "BusinessPartner"
+    ],
+    "Property_Count": 58,
+    "Navigation_Count": 9
+  },
+  "A_BusinessPartnerAddressType": {
+    "Label": "Address",
+    "Key_Fields": [
+      "BusinessPartner",
+      "AddressID"
+    ],
+    "Property_Count": 44,
+    "Navigation_Count": 6
+  },
+  "A_BusinessPartnerBankType": {
+    "Label": "Bank",
+    "Key_Fields": [
+      "BusinessPartner",
+      "BankIdentification"
+    ],
+    "Property_Count": 18,
+    "Navigation_Count": 0
+  },
+  "A_BusinessPartnerContactType": {
+    "Label": "Contact",
+    "Key_Fields": [
+      "RelationshipNumber",
+      "BusinessPartnerCompany",
+      "BusinessPartnerPerson",
+      "ValidityEndDate"
+    ],
+    "Property_Count": 7,
+    "Navigation_Count": 2
+  },
+  "A_BusinessPartnerRoleType": {
+    "Label": "Role",
+    "Key_Fields": [
+      "BusinessPartner",
+      "BusinessPartnerRole"
+    ],
+    "Property_Count": 5,
+    "Navigation_Count": 0
+  },
+  "A_BusinessPartnerTaxNumberType": {
+    "Label": "Tax Number",
+    "Key_Fields": [
+      "BusinessPartner",
+      "BPTaxType"
+    ],
+    "Property_Count": 5,
+    "Navigation_Count": 0
+  },
+  "A_CustomerType": {
+    "Label": "Customer",
+    "Key_Fields": [
+      "Customer"
+    ],
+    "Property_Count": 37,
+    "Navigation_Count": 5
+  },
+  "A_CustomerCompanyType": {
+    "Label": "Customer Company",
+    "Key_Fields": [
+      "Customer",
+      "CompanyCode"
+    ],
+    "Property_Count": 34,
+    "Navigation_Count": 3
+  },
+  "A_CustomerCompanyTextType": {
+    "Label": "Customer Company Text",
+    "Key_Fields": [
+      "Customer",
+      "CompanyCode",
+      "Language",
+      "LongTextID"
+    ],
+    "Property_Count": 5,
+    "Navigation_Count": 0
+  },
+  "A_CustomerDunningType": {
+    "Label": "Customer Dunning",
+    "Key_Fields": [
+      "Customer",
+      "CompanyCode",
+      "DunningArea"
+    ],
+    "Property_Count": 12,
+    "Navigation_Count": 0
+  },
+  "A_CustomerSalesAreaType": {
+    "Label": "Sales Area",
+    "Key_Fields": [
+      "Customer",
+      "SalesOrganization",
+      "DistributionChannel",
+      "Division"
+    ],
+    "Property_Count": 43,
+    "Navigation_Count": 3
+  },
+  "A_CustomerSalesAreaTaxType": {
+    "Label": "Sales Area Tax",
+    "Key_Fields": [
+      "Customer",
+      "SalesOrganization",
+      "DistributionChannel",
+      "Division",
+      "DepartureCountry",
+      "CustomerTaxCategory"
+    ],
+    "Property_Count": 7,
+    "Navigation_Count": 0
+  },
+  "A_CustomerSalesAreaTextType": {
+    "Label": "Customer Sales Area Text",
+    "Key_Fields": [
+      "Customer",
+      "SalesOrganization",
+      "DistributionChannel",
+      "Division",
+      "Language",
+      "LongTextID"
+    ],
+    "Property_Count": 7,
+    "Navigation_Count": 0
+  },
+  "A_CustomerTaxGroupingType": {
+    "Label": "Customer Tax Grouping",
+    "Key_Fields": [
+      "Customer",
+      "CustomerTaxGroupingCode"
+    ],
+    "Property_Count": 8,
+    "Navigation_Count": 0
+  },
+  "A_CustomerTextType": {
+    "Label": "Customer Text",
+    "Key_Fields": [
+      "Customer",
+      "Language",
+      "LongTextID"
+    ],
+    "Property_Count": 4,
+    "Navigation_Count": 0
+  },
+  "A_CustomerUnloadingPointType": {
+    "Label": "Customer Unloading Point",
+    "Key_Fields": [
+      "Customer",
+      "UnloadingPointName"
+    ],
+    "Property_Count": 33,
+    "Navigation_Count": 0
+  },
+  "A_CustomerWithHoldingTaxType": {
+    "Label": "Withholding Tax",
+    "Key_Fields": [
+      "Customer",
+      "CompanyCode",
+      "WithholdingTaxType"
+    ],
+    "Property_Count": 14,
+    "Navigation_Count": 0
+  },
+  "A_CustSalesPartnerFuncType": {
+    "Label": "Sales Partner Functions",
+    "Key_Fields": [
+      "Customer",
+      "SalesOrganization",
+      "DistributionChannel",
+      "Division",
+      "PartnerCounter",
+      "PartnerFunction"
+    ],
+    "Property_Count": 13,
+    "Navigation_Count": 0
+  },
+  "A_SupplierType": {
+    "Label": "Supplier",
+    "Key_Fields": [
+      "Supplier"
+    ],
+    "Property_Count": 36,
+    "Navigation_Count": 3
+  },
+  "A_SupplierCompanyType": {
+    "Label": "Supplier Company",
+    "Key_Fields": [
+      "Supplier",
+      "CompanyCode"
+    ],
+    "Property_Count": 38,
+    "Navigation_Count": 4
+  },
+  "A_SupplierCompanyTextType": {
+    "Label": "Supplier Company Text",
+    "Key_Fields": [
+      "Supplier",
+      "CompanyCode",
+      "Language",
+      "LongTextID"
+    ],
+    "Property_Count": 5,
+    "Navigation_Count": 0
+  },
+  "A_SupplierDunningType": {
+    "Label": "Supplier Dunning",
+    "Key_Fields": [
+      "Supplier",
+      "CompanyCode",
+      "DunningArea"
+    ],
+    "Property_Count": 12,
+    "Navigation_Count": 0
+  },
+  "A_SupplierPartnerFuncType": {
+    "Label": "Purchasing Partner Functions",
+    "Key_Fields": [
+      "Supplier",
+      "PurchasingOrganization",
+      "SupplierSubrange",
+      "Plant",
+      "PartnerFunction",
+      "PartnerCounter"
+    ],
+    "Property_Count": 11,
+    "Navigation_Count": 0
+  },
+  "A_SupplierPurchasingOrgType": {
+    "Label": "Purchasing Organization",
+    "Key_Fields": [
+      "Supplier",
+      "PurchasingOrganization"
+    ],
+    "Property_Count": 26,
+    "Navigation_Count": 2
+  },
+  "A_SupplierPurchasingOrgTextType": {
+    "Label": "Purchasing Organization Text",
+    "Key_Fields": [
+      "Supplier",
+      "PurchasingOrganization",
+      "Language",
+      "LongTextID"
+    ],
+    "Property_Count": 5,
+    "Navigation_Count": 0
+  },
+  "A_SupplierTextType": {
+    "Label": "Supplier Text",
+    "Key_Fields": [
+      "Supplier",
+      "Language",
+      "LongTextID"
+    ],
+    "Property_Count": 4,
+    "Navigation_Count": 0
+  },
+  "A_SupplierWithHoldingTaxType": {
+    "Label": "Company Withholding Tax",
+    "Key_Fields": [
+      "Supplier",
+      "CompanyCode",
+      "WithholdingTaxType"
+    ],
+    "Property_Count": 13,
+    "Navigation_Count": 0
+  }
+}
