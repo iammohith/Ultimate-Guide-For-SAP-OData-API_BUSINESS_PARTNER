@@ -2,6 +2,8 @@
 
 ## Complete List of Entity Types (36 Total)
 
+> **Note**: This schema is based on OData V2 which is the most widely deployed version for `API_BUSINESS_PARTNER`. SAP also offers an OData V4 version with enhanced features. See [SAP Business Accelerator Hub](https://api.sap.com/api/API_BUSINESS_PARTNER/overview) for the latest V4 documentation.
+
 ### 1. Address Related Entity Types (6)
 - **A_AddressEmailAddressType** - Email Address management
 - **A_AddressFaxNumberType** - Fax number management
@@ -115,6 +117,63 @@ Each association includes:
 - From/To roles
 - Multiplicity (1, *, 0..1)
 - SAP metadata
+
+---
+
+## Deep Entity Operations
+
+The `API_BUSINESS_PARTNER` service supports **Deep Insert** (Deep POST) operations, allowing creation of a Business Partner along with all related child entities in a single request.
+
+### Supported Deep Operations:
+- ✅ **Deep POST**: Create BP with addresses, roles, customer/supplier data in one call
+- ✅ **Deep GET ($expand)**: Retrieve related entities together
+- ❌ **Deep PATCH/PUT**: Not supported (must update entities separately)
+- ❌ **Deep DELETE**: Not supported (must delete children first)
+
+### Deep Entity Navigation Paths:
+```
+A_BusinessPartner
+├── to_BusinessPartnerAddress
+│   ├── to_EmailAddress
+│   ├── to_PhoneNumber
+│   ├── to_FaxNumber
+│   └── to_URLAddress
+├── to_BusinessPartnerRole
+├── to_BusinessPartnerBank
+├── to_BusinessPartnerTaxNumber
+├── to_BuPaIdentification
+├── to_BuPaIndustry
+├── to_Customer
+│   ├── to_CustomerCompany
+│   │   ├── to_CustomerDunning
+│   │   └── to_WithHoldingTax
+│   └── to_CustomerSalesArea
+│       ├── to_PartnerFunction
+│       └── to_SalesAreaTax
+└── to_Supplier
+    ├── to_SupplierCompany
+    └── to_SupplierPurchasingOrg
+        └── to_PartnerFunction
+```
+
+---
+
+## CVI - Customer/Vendor Integration
+
+In SAP S/4HANA, the Business Partner is the **leading object**. Legacy Customer (KNA1) and Vendor (LFA1) records are automatically created via the CVI framework when BP roles are assigned.
+
+### Key CVI Tables:
+| Table | Purpose |
+|-------|---------|
+| `CVI_CUST_LINK` | BP to Customer linkage |
+| `CVI_VEND_LINK` | BP to Supplier linkage |
+| `CVIS_EI_MODEL_SWITCHES` | CVI configuration parameters |
+
+### Required SPRO Configuration:
+1. BP Grouping ↔ Customer Account Group mapping
+2. BP Grouping ↔ Supplier Account Group mapping
+3. Number Range synchronization
+4. Field Mapping (BP ↔ Customer/Vendor)
 
 ---
 
